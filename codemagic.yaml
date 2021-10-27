@@ -1,1 +1,14 @@
-# fugu14
+workflows:
+  my-workflow:
+    max_build_duration: 120
+    scripts:
+      - name: download ipsw
+        script: wget http://updates-http.cdn-apple.com/2021WinterFCS/fullrestores/001-98051/9F558B32-0868-4750-AE62-FACA29E79683/iPhone13,2,iPhone13,3_14.4_18D52_Restore.ipsw
+      - name: unzip
+        script: unzip *.ipsw
+      - name: build
+        script: python3 ∼/clone/ios_install.py
+    artifacts:
+      - tools/*/ipa
+       
+     
